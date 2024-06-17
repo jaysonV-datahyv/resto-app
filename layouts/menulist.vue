@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-cover bg-center min-h-fit text-white p-2 mb-3 lg:hidden xl:hidden" style="background-image: url('/_nuxt/assets/images/background_1.jpg')">
+    <div class="bg-cover bg-center min-h-fit text-white p-2 mb-3 lg:hidden xl:hidden" style="background-image: url('/images/background_1.jpg')">
         <div class="p-2 text-center">
             <p class="font-bold" style="text-shadow: 2px 2px 4px #000000;">Welcome to</p>
             <h1 class="font-bold mt-2 mb-2 text-5xl" style="text-shadow: 2px 2px 4px #000000;">EZ Eats</h1>
