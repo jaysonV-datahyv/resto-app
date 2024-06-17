@@ -13,7 +13,7 @@
               <div v-for="(item, index) in slotProps.items" :key="index" class="md:w-1/2 w-full">
                 <div class="flex flex-column pt-1 pb-1 gap-3" :class="{ 'border-top-1 surface-border': index !== 0 }">
                   <div class="w-2/4 card flex justify-center">
-                    <Image :src="`${API_BASE_URL}/images/${(item.image_path) ? item.image_path : 'food-placeholder.png'}`" :alt="item.name"
+                    <Image :src="`${API_BASE_URL}/public/images/${(item.image_path) ? item.image_path : 'food-placeholder.png'}`" :alt="item.name"
                       class="block xl:block border-round w-full; margin: auto" preview />
                   </div>
                   <div class="w-2/4 justify-content-between md:align-items-center flex-1 gap-4">
