@@ -1,8 +1,7 @@
 <template>
   <div class="lg:hidden xl:hidden">
     <div class="pl-4 pr-4 mb-5">
-      <Dropdown v-model="selectedCategory" showClear :options="categories" filter optionLabel="name"
-        placeholder="Select a Category" class="w-full md:w-14rem" />
+      <Dropdown v-model="selectedCategory" showClear filter :options="categories" optionValue="id" optionLabel="name" placeholder="Select a Category" class="w-full md:w-14rem" v-on:change="fetchCategoriesFoodItems(selectedCategory)"/>
     </div>
     <div v-for="item in products" class="mb-2 pl-4 pr-4">
       <h1 class="font-bold">{{ item.name }}</h1>
@@ -13,7 +12,7 @@
               <div v-for="(item, index) in slotProps.items" :key="index" class="md:w-1/2 w-full">
                 <div class="flex flex-column pt-1 pb-1 gap-3" :class="{ 'border-top-1 surface-border': index !== 0 }">
                   <div class="w-2/4 card flex justify-center">
-                    <Image :src="`${API_BASE_URL}/public/images/${(item.image_path) ? item.image_path : 'food-placeholder.png'}`" :alt="item.name"
+                    <Image :src="`${API_BASE_IMAGE_URL}/${(item.image_path) ? item.image_path : 'food-placeholder.png'}`" :alt="item.name"
                       class="block xl:block border-round w-full; margin: auto" preview />
                   </div>
                   <div class="w-2/4 justify-content-between md:align-items-center flex-1 gap-4">
@@ -58,11 +57,11 @@ const fetchCategories = async () => { // GET FOOD CATEGORIES
   }
 };
 
-const fetchCategoriesFoodItems = async () => { // GET FOOD CATEGORIES & ITEMS
+const fetchCategoriesFoodItems = async (category_id = 0) => { // GET FOOD CATEGORIES & ITEMS
   try {
     isLoading.value = true;
     const response = await $fetch<{ food_categories: menuCategoryFoodItems[] }>(
-      `${API_BASE_URL}/api/food_category/get_category_food_list`
+      `${API_BASE_URL}/api/food_category/get_category_food_list/${ (category_id) ? category_id : 0}`
     );
     products.value = response.food_categories;
   } catch (error) {
@@ -76,6 +75,7 @@ onMounted(() => {
   fetchCategories();
   fetchCategoriesFoodItems();
 });
+
 </script>
 
 <style>
