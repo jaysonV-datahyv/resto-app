@@ -40,7 +40,6 @@ definePageMeta({
 const isLoading = ref(false);
 const selectedCategory = ref();
 const categories = ref<foodCategory[]>([]);
-// const categories = ref([]);
 const products = ref<menuCategoryFoodItems[]>([]);
 
 const fetchCategories = async () => { // GET FOOD CATEGORIES
