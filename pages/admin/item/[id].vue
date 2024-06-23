@@ -14,7 +14,7 @@ const route = useRoute();
 const image_path = ref(undefined);
 const image_src = ref();
 const recordid = ref(route.params.id);
-const selectedCategory = ref();
+const selectedCategory = ref(null);
 const categories = ref<foodCategory[]>([]);
 let currency = Intl.NumberFormat("en-US", {
     style: 'currency',
