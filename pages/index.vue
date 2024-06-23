@@ -32,7 +32,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-
+import 'primeicons/primeicons.css';
 definePageMeta({
   layout: "menulist"
 });
