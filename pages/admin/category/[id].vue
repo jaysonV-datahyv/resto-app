@@ -49,10 +49,10 @@ const fetchUncategorizedFoodItem = async (recorId = 0) => { // GET FOOD CATEGORY
 };
 
 onMounted(() => {
+    fetchUncategorizedFoodItem();
     if (recordid.value != 0) {
         fetchCategoryDetails(recordid.value);
-    }
-    fetchUncategorizedFoodItem();
+    }    
 });
 
 const getRecord = async () => {
@@ -61,7 +61,7 @@ const getRecord = async () => {
         formData.append('name', name.value);
         formData.append('description', description.value);
         formData.append('order', order.value);
-        formData.append('food_ids', fooditemList.value[1]);
+        formData.append('food_ids', JSON.stringify(fooditemList.value[1])); 
         if (active.value) {
             formData.append('active', 'true');
         } else {
@@ -90,10 +90,10 @@ const editRecord = async () => {
         'name': name.value,
         'description': description.value,
         'order': order.value,
-        'food_ids': fooditemList.value[1],
+        'food_ids': JSON.stringify(fooditemList.value[1]),
         'active': (active.value) ? 'true' : 'false'
     });
-    console.log(data);
+
     try {
         const response = await $fetch(`${API_BASE_URL}/api/food_category/update_record/${recordid.value}`, {
             method: "PUT",
@@ -102,7 +102,6 @@ const editRecord = async () => {
                 Accept: "application/json",
             },
         });
-        console.log(response);
         toast.add({ severity: 'success', summary: 'Confirmed', detail: 'Record Updated Successfully!', life: 3000 });
     } catch (error) {
         console.log(error);
