@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-9">
+    <div class="mt-9 lg:hidden xl:hidden">
         <Panel class="rounded-none bg-slate-700">
             <div class="m-0 text-white" id="footer-page" v-html="sys_property_value"></div>
         </Panel>
