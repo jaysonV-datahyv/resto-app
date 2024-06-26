@@ -32,3 +32,9 @@ export interface menuCategoryFoodItems {
     name: string;
     food_items: any
 }
+
+export interface systemProperty {
+    id: number;
+    name: string;
+    value: string
+}

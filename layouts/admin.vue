@@ -16,8 +16,8 @@
             <div class="xl:col-span-7 lg:col-span-7 col-span-9 p-5">
                 <slot />
             </div>
+            <div></div>
         </div>
-
     </div>
 </template>
 <script lang="ts" setup>

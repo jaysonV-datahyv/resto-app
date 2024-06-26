@@ -37,19 +37,20 @@ const items = ref([
                 route: '/admin/item'
             }
         ]
-    },
-    // {
-    //     label: 'Profile',
-    //     items: [
-    //         {
-    //             label: 'Settings',
-    //             icon: 'pi pi-cog'
-    //         },
-    //         {
-    //             label: 'Logout',
-    //             icon: 'pi pi-sign-out'
-    //         }
-    //     ]
-    // }
+    },{
+        label: 'Page Content',
+        items: [
+            {
+                label: 'Header',
+                icon: '',
+                route: '/admin/content/header'
+            },
+            {
+                label: 'Footer',
+                icon: '',
+                route: '/admin/content/footer'
+            }
+        ]
+    }
 ]);
 </script>
