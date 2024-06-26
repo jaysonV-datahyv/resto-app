@@ -1,6 +1,6 @@
 <template>
     <div class="mt-9 lg:hidden xl:hidden">
-        <Panel class="rounded-none bg-slate-700">
+        <Panel class="rounded-none"  style="background-color: rgb(51 65 85);">
             <div class="m-0 text-white" id="footer-page" v-html="sys_property_value"></div>
         </Panel>
     </div>

@@ -11,7 +11,7 @@
                 <div>
                     <div class="w-full">
                         <Panel header="Preview">
-                            <Panel class="rounded-none bg-slate-700">
+                            <Panel class="rounded-none" style="background-color: rgb(51 65 85);">
                                 <div class="m-0 text-white" v-html="sys_property_value"></div>
                             </Panel>                           
                         </Panel>
