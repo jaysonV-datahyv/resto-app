@@ -149,7 +149,7 @@ const clearfields = () => {
                                 <template #targetheader> Selected Food Item </template>
                                 <template #item="slotProps">
                                     <div class="border-l-2 border-green-600 p-1 bg-slate-50">
-                                        <span class="font-bold text-xs">{{ (slotProps.item.code) ? slotProps.item.code : 'No Code' }} {{ slotProps.item.code }} : {{ slotProps.item.name }}</span> <br>
+                                        <span class="font-bold text-xs">{{ (slotProps.item.code) ? slotProps.item.code : 'No Code' }} : {{ slotProps.item.name }}</span> <br>
                                         <span class="font-semibold text-xs"> <i class="pi pi-tag" style="font-size: 1rem"></i> {{ currency.format(slotProps.item.price) }}</span>
                                     </div>
                                 </template>
