@@ -6,7 +6,7 @@
         <Panel header="Food Category">
             <DataTable v-model:filters="filters" :value="categories" paginator stripedRows showGridlines :rows="10" dataKey="id"
                 :loading="loading" 
-                :globalFilterFields="['name', 'country.name', 'representative.name', 'balance', 'status']"
+                :globalFilterFields="['name', 'description', 'order']"
                 class="mt-5 data-table">
                 <template #header>
                     <div class="grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4">

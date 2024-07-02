@@ -6,7 +6,7 @@
         <Panel header="Food Item">
             <DataTable v-model:filters="filters" :value="customers" paginator stripedRows showGridlines :rows="10" dataKey="id"
                 :loading="loading" 
-                :globalFilterFields="['name', 'country.name', 'representative.name', 'balance', 'status']"
+                :globalFilterFields="['name', 'description', 'price']"
                 class="mt-5">
                 <template #header>
                     <div class="grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4">
@@ -32,7 +32,7 @@
                 <template #loading> Loading customers data. Please wait. </template>
                 <Column sortable field="name" header="Name" style="min-width: 12rem">
                     <template #body="{ data }">
-                        {{ data.name }}
+                        <b>{{ (data.code) ? data.code : 'No Code' }} </b> : {{ data.name }}
                     </template>
                 </Column>
                 <Column sortable field="description" header="Description" style="min-width: 12rem">

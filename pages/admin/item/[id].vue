@@ -7,6 +7,7 @@ import { useToast } from "primevue/usetoast";
 
 const toast = useToast();
 const name = ref(null);
+const code = ref(null);
 const description = ref(null);
 const price = ref(null);
 const active = ref(true);
@@ -39,6 +40,7 @@ const fetchFoodItemDetails = async (recorId = 0) => { // GET FOOD CATEGORY DETAI
         );
 
         name.value = response.foodItem_details[0].name;
+        code.value = response.foodItem_details[0].code;
         description.value = response.foodItem_details[0].description;
         price.value = response.foodItem_details[0].price;
         selectedCategory.value = response.foodItem_details[0].category_id;
@@ -63,6 +65,7 @@ const getRecord = async () => {
         const formData = new FormData();
         formData.append('id', recordid.value);
         formData.append('name', name.value);
+        formData.append('code', code.value);
         formData.append('price', price.value);
         formData.append('description', description.value);
         formData.append('image_path', image_path.value);
@@ -150,6 +153,10 @@ const setImageDefault = () => {
                                 <InputText id="name" class="w-full" v-model="name" required />
                             </div>
                             <div>
+                                <label for="code" class="block font-semibold">Code <span class="text-red-600">*</span></label>
+                                <InputText id="code" class="w-full" v-model="code" required />
+                            </div>
+                            <div>
                                 <label for="price" class="block font-semibold">Price</label>
                                 <InputNumber v-model="price" inputId="locale-us" locale="en-US" :minFractionDigits="2"
                                     class="w-full"/>
@@ -176,7 +183,7 @@ const setImageDefault = () => {
                                                 class="block xl:block border-round w-full; margin: auto" preview />
                                         </div>
                                         <div class="w-2/4 justify-content-between md:align-items-center flex-1 gap-4">
-                                            <div class="font-bold text-xs">{{ (name) ? name : 'Enter Food Item Name' }}
+                                            <div class="font-bold text-xs">{{ (code) ? code : 'A0' }} : {{ (name) ? name : 'Enter Food Item Name' }}
                                             </div>
                                             <span class="font-semibold text-xs">
                                                 <i class="pi pi-tag" style="font-size: 1rem"></i>  {{ (price) ? currency.format(price) : '0.00' }}

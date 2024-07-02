@@ -16,7 +16,7 @@
                       class="block xl:block border-round w-full; margin: auto" preview />
                   </div>
                   <div class="w-2/4 justify-content-between md:align-items-center flex-1 gap-4">
-                    <div class="font-bold text-xs">{{ item.name }}</div>
+                    <div class="font-bold text-xs">{{ (item.code) ? item.code + ' : ' : '' }} {{ item.name }}</div>
                     <span class="font-semibold text-xs"><i class="pi pi-tag" style="font-size: 1rem"></i> {{ currency.format(item.price) }}</span>
                     <p class="text-xs m-2 font-normal">{{ item.description }}</p>
                   </div>
