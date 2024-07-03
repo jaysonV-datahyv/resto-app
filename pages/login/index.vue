@@ -8,7 +8,7 @@
             <div class="mt-12">
                 <Panel class="shadow-2xl xl:p-4 sm:p-2 xl:w-1/4 md-1/2 sm:w-full xl:m-auto sm:m-0">
                     <div class="rounded-full bg-white -mt-32 inline-flex shadow-lg p-4 border border-slate-300">
-                        <Image src="/_nuxt/assets/images/ez_eats_logo.png" alt="EZ Eats Logo" class="xl:w-48 lg:w-44 md:w-40 w-32" />
+                        <Image src="/images/ez_eats_logo.png" alt="EZ Eats Logo" class="xl:w-48 lg:w-44 md:w-40 w-32" />
                     </div>
                     <form @submit.prevent="login">
                         <div class="card mt-12">
