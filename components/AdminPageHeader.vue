@@ -1,6 +1,12 @@
 <template>
     <div class="card w-full">
-        <Menu :model="items">
+        <div class="text-center">
+            <i class="pi pi-user bg-white p-5 rounded-full " style="font-size: 2.5rem"></i>
+            <p class="text-xl font-bold drop-shadow-2xl border-black mt-2">EZ Eats User</p>
+            <p>Admin</p>
+        </div>
+        
+        <Menu :model="items" class="mt-5">
             <template #item="{ item, props }">
                 <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
                     <a v-ripple :href="href" v-bind="props.action" @click="navigate">
@@ -49,6 +55,20 @@ const items = ref([
                 label: 'Footer',
                 icon: '',
                 route: '/admin/content/footer'
+            }
+        ]
+    },{
+        label: 'Settings',
+        items: [
+            // {
+            //     label: 'Profile',
+            //     icon: '',
+            //     route: '/admin/content/header'
+            // },
+            {
+                label: 'Logout',
+                icon: '',
+                route: '/login'
             }
         ]
     }
