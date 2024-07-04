@@ -1,8 +1,8 @@
 <template>
     <div class="card w-full">
         <div class="text-center">
-            <i class="pi pi-user bg-white p-5 rounded-full " style="font-size: 2.5rem"></i>
-            <p class="text-xl font-bold drop-shadow-2xl border-black mt-2">EZ Eats User</p>
+            <i class="pi pi-user bg-white p-5 rounded-full drop-shadow-2xl" style="font-size: 2.5rem"></i>
+            <p class="text-xl font-bold drop-shadow-2xl border-black mt-5">{{ USER_SESSION.name }}</p>
             <p>Admin</p>
         </div>
         
@@ -68,9 +68,28 @@ const items = ref([
             {
                 label: 'Logout',
                 icon: '',
-                route: '/login'
+                // route: '/login'
+                command: () => {
+                    // router.push('/login');
+                    logout();
+                }
             }
         ]
     }
 ]);
+
+const logout = async () => {
+    const response = await $fetch(`${API_BASE_URL}/api/auth/logout`, {
+        method: "POST",
+        body: [],
+        headers: {
+            Accept: "application/json",
+        },
+    });
+
+    if(response['Status'] == "Success") {        
+        router.push('/login');
+    }
+
+};
 </script>

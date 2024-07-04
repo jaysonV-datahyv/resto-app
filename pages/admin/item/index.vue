@@ -64,7 +64,8 @@
 
 <script lang="ts" setup>
 definePageMeta({
-    layout: "admin"
+    layout: "admin",
+    middleware: 'auth'
 });
 import { ref, onMounted } from 'vue';
 import 'primeicons/primeicons.css';

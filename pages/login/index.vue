@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Toast />
         <div class="p-12 text-center ">
             <div class="mb-24 text-white">
                 <p class="mt-5 text-2xl font-bold drop-shadow-2xl border-black">Welcome to</p>
@@ -10,7 +11,7 @@
                     <div class="rounded-full bg-white -mt-32 inline-flex shadow-lg p-4 border border-slate-300">
                         <Image src="/images/ez_eats_logo.png" alt="EZ Eats Logo" class="xl:w-48 lg:w-44 md:w-40 w-32" />
                     </div>
-                    <form @submit.prevent="login">
+                    <form @submit.prevent="validate_login">
                         <div class="card mt-7">
                             <div class="grid gap-3 mb-5 text-left">
                                 <div>
@@ -38,16 +39,43 @@
         </div>
     </div>
 </template>
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
 import 'primeicons/primeicons.css';
 const router = useRouter();
 const password = ref();
 const email = ref();
 const accept = ref(false);
+const toast = useToast();
 
-const login = async () => {
-    router.push(`/admin/category`);
+const validate_login = async () => {
+    try {
+        const formData = new FormData();
+        formData.append('email', email.value);
+        formData.append('password', password.value);
+        const data = login(formData);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const login = async (data: any) => {
+    const response = await $fetch(`${API_BASE_URL}/api/auth/login`, {
+        method: "POST",
+        body: data,
+        headers: {
+            Accept: "application/json",
+        },
+    });
+
+    if(response['Status'] == "Success") {        
+        USER_SESSION.value = response['Data'];
+        console.log(response['Data']);
+        router.push(`/admin/category`);
+    }else{
+        toast.add({ severity: 'error', summary: 'Failed', detail: response['Message'], life: 3000 });
+    }
+
 };
 </script>
 <style>

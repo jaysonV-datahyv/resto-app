@@ -58,13 +58,14 @@
                     </template>
                 </Column>
             </DataTable>
-        </Panel>
+        </Panel>        
     </div>
 </template>
 
 <script lang="ts" setup>
 definePageMeta({
-    layout: "admin"
+    layout: "admin",
+    middleware: 'auth'
 });
 import { ref, onMounted } from 'vue';
 import 'primeicons/primeicons.css';
@@ -93,7 +94,7 @@ const fetchCategories = async () => { // GET FOOD CATEGORIES
 };
 
 onMounted(() => {
-    fetchCategories();
+    fetchCategories();    
 });
 
 const getState = (active) => {

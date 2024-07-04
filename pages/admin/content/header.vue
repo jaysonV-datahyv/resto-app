@@ -26,7 +26,8 @@
 </template>
 <script lang="ts" setup>
 definePageMeta({
-    layout: "admin"
+    layout: "admin",
+    middleware: 'auth'
 });
 import Editor from 'primevue/editor';
 import { ref, onMounted } from 'vue';
