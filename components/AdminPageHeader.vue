@@ -2,7 +2,7 @@
     <div class="card w-full">
         <div class="text-center">
             <i class="pi pi-user bg-white p-5 rounded-full drop-shadow-2xl" style="font-size: 2.5rem"></i>
-            <p class="text-xl font-bold drop-shadow-2xl border-black mt-5">{{ USER_SESSION.name }}</p>
+            <p class="text-xl font-bold drop-shadow-2xl border-black mt-5">{{ (USER_SESSION) ? USER_SESSION.name : '' }}</p>
             <p>Admin</p>
         </div>
         
