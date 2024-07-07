@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <Button type="submit" :label="'Save'" class="ml-1 mr-1" @click="editRecord()" />
+            <Button type="submit" :label="'Save'" class="ml-1 mr-1" @click="editRecord()" :disabled="submitDisabled"/>
         </Panel>
     </div>
 </template>
@@ -34,6 +34,7 @@ import { useToast } from "primevue/usetoast";
 const toast = useToast();
 const sys_property_value = ref('');
 const editorRef = ref('');
+const submitDisabled = ref(false);
 
 const fetchSysProp = async () => { // GET FOOD CATEGORIES
     try {
@@ -66,6 +67,7 @@ watch(editorRef, (editor) => {
 })
 
 const editRecord = async () => {
+    submitDisabled.value = true;
     let data = JSON.stringify({
         'value': sys_property_value.value,
     });
@@ -83,6 +85,7 @@ const editRecord = async () => {
     } catch (error) {
         console.log(error);
     }
+    submitDisabled.value = false;
 };
 
 </script>

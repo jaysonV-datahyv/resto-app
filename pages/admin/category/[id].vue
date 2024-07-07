@@ -13,6 +13,7 @@ const order = ref(null);
 const active = ref(true);
 const route = useRoute()
 const recordid = ref(route.params.id);
+const submitDisabled = ref(false);
 const fooditemList = ref(null);
 let currency = Intl.NumberFormat("en-US", {
     style: 'currency',
@@ -57,6 +58,7 @@ onMounted(() => {
 });
 
 const getRecord = async () => {
+    submitDisabled.value = true;
     try {
         const formData = new FormData();
         formData.append('name', name.value);
@@ -84,6 +86,7 @@ const submitNewRecord = async (data: any) => {
     });
     toast.add({ severity: 'success', summary: 'Confirmed', detail: 'Record Added Successfully!', life: 3000 });
     clearfields();
+    submitDisabled.value = false;
 };
 
 const editRecord = async () => {
@@ -107,6 +110,7 @@ const editRecord = async () => {
     } catch (error) {
         console.log(error);
     }
+    submitDisabled.value = false;
 };
 
 const clearfields = () => {
@@ -158,7 +162,7 @@ const clearfields = () => {
                             
                         </div>
                     </div>
-                    <Button type="submit" :label="(recordid == '0') ? 'Submit' : 'Save'" class="ml-1 mr-1" />
+                    <Button type="submit" :label="(recordid == '0') ? 'Submit' : 'Save'" class="ml-1 mr-1" :disabled="submitDisabled"/>
                     <router-link to="/admin/category" target="_self" rel="noopener">
                         <Button label="Cancel" class="ml-1 mr-1" severity="danger" />
                     </router-link>
